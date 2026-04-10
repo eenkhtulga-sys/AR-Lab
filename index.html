@@ -19,7 +19,7 @@
   <body>
     <div id="example-scanning-overlay">Зураг руу утсаа чиглүүлнэ үү...</div>
 
-    <a-scene mindar-image="imageTargetSrc: ./targets.mind;" 
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind;filterMinCF: 0.0001; filterBeta: 0.001;" 
          color-space="sRGB" 
          renderer="colorManagement: true, physicallyCorrectLights" 
          vr-mode-ui="enabled: false" 
@@ -32,12 +32,12 @@
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-gltf-model src="#labModel" 
+        <a-gltf-model if="myModel" src="#labModel"  
                       position="0 0.5 0" 
                       rotation="0 0 0" 
                       scale="5 5 5"
-                      animation-mixer
-                      class="clickable">
+                      class="clickable"
+                      animation="property: position; to: 0 0.1 0; dur: 1500; dir: alternate; loop: true; easing: easeInOutSine">
         </a-gltf-model>
       </a-entity>
       
